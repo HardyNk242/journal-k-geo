@@ -1,0 +1,17 @@
+# Document de maintenance interne : mentionne l'etat des accords des membres
+# du comite. Ne doit pas etre publie.
+LISEZ-MOI.md
+
+# Fichiers d'apercu autonomes generes pour relecture
+apercu-*.html
+
+# Systeme
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Ressources de marque brutes fournies par Kongo Science : contiennent le
+# robots.txt, le sitemap et le 404 du site kongoscience.com, qui ne doivent
+# pas etre publies avec la revue. Seules les images utiles ont ete copiees
+# dans assets/img/.
+assets/logos KS/

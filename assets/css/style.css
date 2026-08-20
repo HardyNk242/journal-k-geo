@@ -1,0 +1,221 @@
+/* ==========================================================================
+   Journal of K-Geo — feuille de style principale
+   Kongo Science, Brazzaville, Republique du Congo
+   ========================================================================== */
+
+:root {
+  /* Couleurs officielles Kongo Science, relevees sur le logo */
+  --kgeo:        #3850a0;   /* bleu indigo du logo */
+  --kgeo-dark:   #26346b;
+  --kgeo-light:  #eaedf7;
+  --ocre:        #f09020;   /* orange du logo : aplats, bordures, accents */
+  --ocre-deep:   #a85e08;   /* meme orange assombri : textes et boutons,
+                               pour un contraste lisible sur fond clair */
+  --ocre-light:  #fdf2e3;
+  --text:        #1c2530;
+  --text-soft:   #4a5765;
+  --line:        #d9e0e8;
+  --bg:          #ffffff;
+  --bg-soft:     #f5f7fa;
+  --radius:      6px;
+  --maxw:        1120px;
+  --serif:       "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --sans:        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Bascule de langue -------------------------------------------- */
+body.lang-fr [data-lang="en"],
+body.lang-en [data-lang="fr"] { display: none !important; }
+
+/* ---------- Elements de base --------------------------------------------- */
+h1, h2, h3, h4 { font-family: var(--serif); color: var(--kgeo-dark); line-height: 1.25; margin: 0 0 .6em; font-weight: 700; }
+h1 { font-size: 2.3rem; }
+h2 { font-size: 1.65rem; margin-top: 2.2em; }
+h3 { font-size: 1.2rem; margin-top: 1.8em; color: var(--kgeo); }
+p, li { color: var(--text); }
+a { color: var(--kgeo); text-decoration: none; border-bottom: 1px solid rgba(56,80,160,.28); }
+a:hover { color: var(--ocre-deep); border-bottom-color: var(--ocre-deep); }
+strong { color: var(--kgeo-dark); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: .88em; background: var(--bg-soft); padding: .1em .35em; border-radius: 3px; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+.narrow { max-width: 840px; }
+
+/* ---------- Bandeau superieur -------------------------------------------- */
+.topbar { background: var(--kgeo-dark); color: #d3d9f0; font-size: .82rem; }
+.topbar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 7px; padding-bottom: 7px; flex-wrap: wrap; }
+.topbar a { color: #fff; border: 0; }
+.topbar .badges span { margin-right: 14px; white-space: nowrap; }
+
+.langswitch { display: inline-flex; border: 1px solid rgba(255,255,255,.45); border-radius: 4px; overflow: hidden; }
+.langswitch button {
+  font: inherit; font-weight: 600; letter-spacing: .04em;
+  background: transparent; color: #fff; border: 0; padding: 3px 11px; cursor: pointer;
+}
+.langswitch button[aria-pressed="true"] { background: #fff; color: var(--kgeo-dark); }
+
+/* ---------- En-tete ------------------------------------------------------- */
+header.masthead { border-bottom: 3px solid var(--kgeo); background: #fff; }
+header.masthead .wrap { display: flex; align-items: center; gap: 20px; padding-top: 20px; padding-bottom: 20px; flex-wrap: wrap; }
+.logo { width: 120px; height: auto; flex: none; }
+.titleblock .jtitle { font-family: var(--serif); font-size: 1.9rem; font-weight: 700; color: var(--kgeo); line-height: 1.1; display: block; }
+.titleblock .jsub { font-size: .93rem; color: var(--text-soft); display: block; margin-top: 4px; }
+.titleblock a { border: 0; }
+
+/* ---------- Navigation ---------------------------------------------------- */
+nav.main { background: var(--kgeo); position: sticky; top: 0; z-index: 20; }
+nav.main ul { list-style: none; margin: 0 auto; padding: 0 12px; display: flex; flex-wrap: wrap; max-width: var(--maxw); }
+nav.main a {
+  display: block; color: #fff; border: 0; padding: 12px 15px;
+  font-size: .93rem; font-weight: 500; border-bottom: 3px solid transparent;
+}
+nav.main a:hover { background: var(--kgeo-dark); color: #fff; }
+nav.main a.active { border-bottom-color: var(--ocre); background: var(--kgeo-dark); }
+
+/* ---------- Bloc d'accueil ------------------------------------------------ */
+.hero { background: linear-gradient(160deg, var(--kgeo-dark) 0%, var(--kgeo) 60%, #4a63b8 100%); color: #fff; padding: 58px 0 52px; }
+.hero h1 { color: #fff; font-size: 2.6rem; margin-bottom: .35em; }
+.hero p.lead { font-size: 1.15rem; color: #dee3f5; max-width: 740px; margin: 0 0 1.6em; }
+.hero .cta { display: flex; gap: 14px; flex-wrap: wrap; }
+/* Sur fond sombre, le gras doit rester clair : la regle globale
+   strong{color:var(--kgeo-dark)} le rendrait illisible. */
+.hero strong, .hero em { color: #fff; }
+
+.btn {
+  display: inline-block; padding: 11px 22px; border-radius: var(--radius);
+  font-weight: 600; font-size: .96rem; border: 2px solid transparent; cursor: pointer;
+}
+.btn-primary { background: var(--ocre-deep); color: #fff; border-color: var(--ocre-deep); }
+.btn-primary:hover { background: #8c4e06; color: #fff; border-color: #8c4e06; }
+.btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+.btn-ghost:hover { background: rgba(255,255,255,.14); color: #fff; border-color: #fff; }
+.btn-solid { background: var(--kgeo); color: #fff; border-color: var(--kgeo); }
+.btn-solid:hover { background: var(--kgeo-dark); color: #fff; border-color: var(--kgeo-dark); }
+
+/* ---------- Sections ------------------------------------------------------ */
+section.band { padding: 52px 0; }
+section.band.soft { background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.section-title { text-align: center; margin-bottom: 2rem; }
+.section-title h2 { margin-top: 0; }
+.section-title p { color: var(--text-soft); max-width: 700px; margin: 0 auto; }
+
+.grid { display: grid; gap: 22px; }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+.card {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 24px; border-top: 3px solid var(--kgeo);
+}
+.card h3 { margin-top: 0; }
+.card p:last-child { margin-bottom: 0; }
+.card .num { font-family: var(--serif); font-size: 1.5rem; color: var(--ocre-deep); font-weight: 700; }
+
+/* ---------- Encadres ------------------------------------------------------ */
+.callout { background: var(--kgeo-light); border-left: 4px solid var(--kgeo); padding: 18px 22px; border-radius: 0 var(--radius) var(--radius) 0; margin: 1.8rem 0; }
+.callout.warn { background: var(--ocre-light); border-left-color: var(--ocre); }
+.callout p:first-child { margin-top: 0; }
+.callout p:last-child { margin-bottom: 0; }
+
+.pill { display: inline-block; background: var(--kgeo-light); color: var(--kgeo-dark); border-radius: 999px; padding: 4px 13px; font-size: .82rem; font-weight: 600; margin: 0 6px 8px 0; }
+.pill.ocre { background: var(--ocre-light); color: var(--ocre-deep); }
+
+/* ---------- Tableaux ------------------------------------------------------ */
+.table-scroll { overflow-x: auto; margin: 1.5rem 0; }
+table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+thead th { background: var(--kgeo); color: #fff; font-weight: 600; border-bottom: 0; }
+tbody tr:nth-child(even) { background: var(--bg-soft); }
+
+/* ---------- Listes speciales ---------------------------------------------- */
+ul.checklist { list-style: none; padding-left: 0; }
+ul.checklist li { padding-left: 30px; position: relative; margin-bottom: .6em; }
+ul.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--kgeo); font-size: 1.15em; }
+
+ol.steps { list-style: none; padding-left: 0; counter-reset: st; }
+ol.steps li { counter-increment: st; padding-left: 46px; position: relative; margin-bottom: 1.1em; }
+ol.steps li::before {
+  content: counter(st); position: absolute; left: 0; top: 1px;
+  width: 30px; height: 30px; border-radius: 50%; background: var(--kgeo); color: #fff;
+  font-size: .9rem; font-weight: 700; display: flex; align-items: center; justify-content: center;
+}
+
+/* ---------- Telechargements ----------------------------------------------- */
+.dl { display: flex; align-items: center; gap: 14px; border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 12px; background: #fff; }
+.dl:hover { border-color: var(--kgeo); background: var(--bg-soft); }
+.dl .ext { font-size: .72rem; font-weight: 700; letter-spacing: .06em; background: var(--kgeo); color: #fff; padding: 5px 8px; border-radius: 3px; flex: none; }
+.dl .ext.doc { background: var(--ocre-deep); }
+.dl .ext.tex { background: #4a5765; }
+.dl a { border: 0; font-weight: 600; }
+.dl small { display: block; color: var(--text-soft); font-weight: 400; }
+
+/* ---------- Membres du comite ---------------------------------------------- */
+.member {
+  border: 1px solid var(--line); border-left: 5px solid var(--kgeo);
+  border-radius: var(--radius); padding: 22px 26px; background: #fff; margin-bottom: 18px;
+}
+.member .name { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--kgeo-dark); margin: 0 0 2px; }
+.member .role { font-size: .85rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ocre-deep); margin: 0 0 10px; }
+.member .affil { margin: 0 0 4px; color: var(--text); }
+.member .affil .inst { font-weight: 600; color: var(--kgeo-dark); }
+.member .place { color: var(--text-soft); font-size: .92rem; margin: 0 0 12px; }
+.member ul { margin: 10px 0 0; padding-left: 20px; font-size: .95rem; }
+.member ul li { margin-bottom: .3em; color: var(--text-soft); }
+.member ul li strong { color: var(--kgeo-dark); }
+.member .links { margin: 12px 0 0; font-size: .92rem; }
+.member .links a { margin-right: 16px; white-space: nowrap; }
+
+/* ---------- Numeros / archives -------------------------------------------- */
+.issue { border: 1px solid var(--line); border-left: 5px solid var(--ocre); border-radius: var(--radius); padding: 22px 26px; background: #fff; margin-bottom: 18px; }
+.issue .meta { color: var(--text-soft); font-size: .9rem; }
+.status { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; background: var(--ocre-light); color: var(--ocre-deep); }
+
+/* ---------- Pied de page --------------------------------------------------- */
+footer.site { background: var(--kgeo-dark); color: #c8cfe8; margin-top: 60px; padding: 44px 0 26px; font-size: .93rem; }
+footer.site h4 { color: #fff; font-family: var(--sans); font-size: .95rem; letter-spacing: .04em; text-transform: uppercase; margin-bottom: .9em; }
+footer.site a { color: #fff; border: 0; }
+footer.site a:hover { color: #f5ad55; }
+footer.site ul { list-style: none; padding: 0; margin: 0; }
+footer.site li { margin-bottom: .45em; }
+footer.site .cols { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 34px; }
+footer.site .legal { border-top: 1px solid rgba(255,255,255,.18); margin-top: 32px; padding-top: 18px; font-size: .85rem; color: #a3adcf; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+/* ---------- Titre de page -------------------------------------------------- */
+.pagehead { background: var(--bg-soft); border-bottom: 1px solid var(--line); padding: 38px 0 30px; }
+.pagehead h1 { margin-bottom: .25em; }
+.pagehead p { color: var(--text-soft); margin: 0; max-width: 780px; }
+
+main { padding-bottom: 20px; }
+main .wrap > h2:first-child { margin-top: 1.6em; }
+
+/* ---------- Responsive ----------------------------------------------------- */
+@media (max-width: 880px) {
+  .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  footer.site .cols { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2rem; }
+  h1 { font-size: 1.8rem; }
+  .titleblock .jtitle { font-size: 1.45rem; }
+  nav.main a { padding: 10px 12px; font-size: .88rem; }
+}
+
+/* ---------- Impression ------------------------------------------------------ */
+@media print {
+  nav.main, .topbar, .hero .cta, footer.site { display: none; }
+  body { font-size: 11pt; }
+  a { color: #000; border: 0; }
+}
